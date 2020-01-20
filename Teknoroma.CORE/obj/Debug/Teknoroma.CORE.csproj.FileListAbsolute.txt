@@ -1,0 +1,11 @@
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\Teknoroma.CORE.dll.config
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\Teknoroma.CORE.dll
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\Teknoroma.CORE.pdb
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\EntityFramework.dll
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\EntityFramework.xml
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\obj\Debug\Teknoroma.CORE.csprojAssemblyReference.cache
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\obj\Debug\Teknoroma.CORE.csproj.CopyComplete
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\obj\Debug\Teknoroma.CORE.dll
+C:\Users\hulya\source\repos\Teknoroma\Teknoroma.CORE\obj\Debug\Teknoroma.CORE.pdb
