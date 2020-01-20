@@ -1,0 +1,65 @@
+﻿@model Teknoroma.MODEL.Entity.Supplier
+@{
+    ViewBag.Title = "AddSupplier";
+    Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+}
+
+
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create Supplier</h1>
+    </div>
+    <form class="user">
+        @if (TempData["Info"] != null)
+        {
+            <span class="text-danger">@TempData["Info"]</span>
+        }
+        @using (Html.BeginForm("AddSupplier", "UnitHead", FormMethod.Post))
+        {
+
+
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = "Supplier Name", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control form-control-user", placeholder = "Contact Name", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.ContactName, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextBoxFor(x => x.ContactTitle, new { @class = "form-control form-control-user", placeholder = "Contact Title", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.ContactTitle, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control form-control-user", placeholder = "Address", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.Address, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control form-control-user", placeholder = "Phone", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    @Html.TextBoxFor(x => x.Fax, new { @class = "form-control form-control-user", placeholder = "Fax", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.Fax, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+        }
+    </form>
+
+</div>
+
+

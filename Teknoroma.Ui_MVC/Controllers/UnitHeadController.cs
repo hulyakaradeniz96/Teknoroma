@@ -12,15 +12,16 @@ namespace Teknoroma.Ui_MVC.Controllers
     {
         CategoryService categoryService = new CategoryService();
         ProductService productService = new ProductService();
-        
-        
+        SupplierService supplierService = new SupplierService();
+        EmployeeService employeeService = new EmployeeService();
+        //Homepage=>Index
         public ActionResult Index()
         {
             List<Category> categories = categoryService.GetAll();
             TempData["CatList"] = categories;
             return View();
         }
-
+        //Adding Parts
         public ActionResult AddCategory()
         {
             return View();
@@ -31,7 +32,7 @@ namespace Teknoroma.Ui_MVC.Controllers
         {
             EmptyInfo();
             categoryService.Add(category);
-            TempData["Info"] = "Kaydetme Başarılı";
+            Saved();
             return View();
         }
 
@@ -45,12 +46,47 @@ namespace Teknoroma.Ui_MVC.Controllers
         {
             EmptyInfo();
             productService.Add(product);
-            TempData["Info"] = "Kaydetme Başarılı";
+            Saved();
             return View();
         }
         void EmptyInfo()
         {
             TempData["Info"] = string.Empty;
+        }
+        void Saved()
+        {
+            TempData["Info"] = "Saved.";
+        }
+
+        public ActionResult AddSupplier()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddSupplier(Supplier supplier)
+        {
+            EmptyInfo();
+            supplierService.Add(supplier);
+            Saved();
+            return View();
+        }
+
+        public ActionResult AddEmployee()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddEmployee(Employee employee)
+        {
+            EmptyInfo();
+            employeeService.Add(employee);
+            Saved();
+            return View();
+        }
+        //Reports
+        public ActionResult InventoryTracking()
+        {
+            return View();
         }
     }
 }
