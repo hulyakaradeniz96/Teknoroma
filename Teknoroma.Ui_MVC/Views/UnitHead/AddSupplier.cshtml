@@ -14,7 +14,7 @@
         {
             <span class="text-danger">@TempData["Info"]</span>
         }
-        @using (Html.BeginForm("AddSupplier", "UnitHead", FormMethod.Post))
+        @using (Html.BeginForm("AddSupplier", "UnitHead", FormMethod.Post, new { @class="user"}))
         {
 
 

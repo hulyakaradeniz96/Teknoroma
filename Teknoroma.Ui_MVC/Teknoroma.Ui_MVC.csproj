@@ -1944,6 +1944,8 @@
     <Content Include="Views\UnitHead\AddSupplier.cshtml" />
     <Content Include="Views\UnitHead\AddEmployee.cshtml" />
     <Content Include="Views\UnitHead\InventoryTracking.cshtml" />
+    <Content Include="Views\UnitHead\SalesTracking.cshtml" />
+    <Content Include="Views\UnitHead\SupplierActivities.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

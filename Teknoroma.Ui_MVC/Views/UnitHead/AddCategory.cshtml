@@ -13,7 +13,7 @@
         {
             <span class="text-danger">@TempData["Info"]</span>
         }
-        @using (Html.BeginForm("AddCategory","UnitHead",FormMethod.Post))
+        @using (Html.BeginForm("AddCategory","UnitHead",FormMethod.Post, new { @class="user"}))
         {
 
 

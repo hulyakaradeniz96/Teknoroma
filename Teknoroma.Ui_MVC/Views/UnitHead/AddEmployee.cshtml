@@ -5,16 +5,16 @@
 }
 
 
-<div class="p-5">
-    <div class="text-center">
-        <h1 class="h4 text-gray-900 mb-4">Create Employee</h1>
-    </div>
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Create Employee</h1>
+        </div>
 
         @if (TempData["Info"] != null)
         {
             <span class="text-danger">@TempData["Info"]</span>
         }
-        @using (Html.BeginForm("AddEmployee", "UnitHead", FormMethod.Post))
+        @using (Html.BeginForm("AddEmployee", "UnitHead", FormMethod.Post, new { @class = "user" }))
         {
 
 
@@ -36,18 +36,30 @@
                     @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="form-group row col-sm-12">
-                //todo:title has to from enums..
-            </div>
+
             <div class="form-group row col-sm-12">
                 <div class="col-sm-12">
                     @Html.TextBoxFor(x => x.Salary, new { @class = "form-control form-control-user", placeholder = "Salary", @type = "number" })
                     @Html.ValidationMessageFor(x => x.Salary, null, new { @class = "text-danger" })
                 </div>
             </div>
+            if (ViewBag.Titles != null)
+            {
+                <div class="form-group row col-sm-12">
+                    <div class="col-sm-12">
+                        <h3>Select the Title</h3>
+                        <div class="list-group">
+                            @foreach (var item in ViewBag.Titles as IEnumerable<Teknoroma.CORE.Entity.Enum.EmployeeTitle>)
+                            {
+                                @item @Html.RadioButtonFor(x => x.Title, item)
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
             <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
         }
 
-</div>
+    </div>
 
 

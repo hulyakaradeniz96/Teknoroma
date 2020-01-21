@@ -1,4 +1,4 @@
-﻿@model List<Teknoroma.MODEL.Entity.Product>
+﻿@model List<Teknoroma.MODEL.Entity.Employee>
 @{
     ViewBag.Title = "InventoryTracking";
     Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
@@ -7,7 +7,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Inventory Tracking</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Sales Tracking</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -15,12 +15,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Units in Stock</th>
-                        <th>Critic Level</th>
-                        <th>Unit Price</th>
-                        <th>Supplier Name</th>
-                        <th>Category Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Title</th>
+                        <th>Sales</th>
+                        <th>Premium Salary</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,11 +28,10 @@
                     <tr>
                         <td>@item.ID</td>
                         <td>@item.Name</td>
-                        <td>@item.UnitInStock</td>
-                        <td>@item.CriticLevel</td>
-                        <td>@item.UnitPrice</td>
-                        <td>@item.Supplier</td>
-                        <td>@item.Category</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Title</td>
+                        <td>@item.SalesQuota</td>
+                        <td>@item.PremiumSalary</td>
                     </tr>
                     }
                 </tbody>
@@ -41,3 +39,4 @@
         </div>
     </div>
 </div>
+

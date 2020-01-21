@@ -21,7 +21,7 @@ namespace Teknoroma.CORE.Entity
 
         //Durum 
         public string Name { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string CreatedComputerName { get; set; }
         public string CreatedIP { get; set; }
         public string CreatedAdUserName { get; set; }

@@ -36,27 +36,43 @@ namespace Teknoroma.MODEL.Entity
         {
             string barcode = "869";
             barcode += GenerateNumber();
-            foreach (string item in barcodeArray)
+            ControlBarcode(barcode); //if exists before??
+        }
+        public void ControlBarcode(string barcode)
+        {
+            if (barcodeArray.Count == 0)
             {
-                if (barcode == item)
+                CreateBarcode(barcode);
+                
+            }
+            else
+            {
+                foreach (String item in barcodeArray)
                 {
-                    GenerateBarcode();
-                }
-                else
-                {
-                    Barcode = barcode;
-                    barcodeArray.Add(barcode);
+                    if (barcode == item && barcodeArray.Count != 1) //if count==0 =>it already creates one.
+                    {
+                        GenerateBarcode();
+                    }
+                    else if (barcode != item)
+                    {
+                        CreateBarcode(barcode);
+                    }
                 }
             }
-        }
 
+        }
+        public void CreateBarcode(string barcode)
+        {
+            Barcode = barcode;
+            barcodeArray.Add(barcode);
+        }
 
         public string Barcode { get; set; }
 
         public string QuantityPerUnit { get; set; } //2kg. box etc.
-        public decimal UnitPrice { get; set; }
-        public short UnitInStock { get; set; }
-        public Status Statu { get; set; }
+        public decimal? UnitPrice { get; set; }
+        public short? UnitInStock { get; set; }
+        public Status? Statu { get; set; }
         public short CriticLevel { get; set; }
 
 

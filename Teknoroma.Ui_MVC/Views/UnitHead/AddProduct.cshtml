@@ -1,20 +1,20 @@
 ﻿@model Teknoroma.MODEL.Entity.Product
 @{
     ViewBag.Title = "AddProduct";
-    Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+    Layout = "~/Views/UnitHead/Shared/Shared.cshtml"; 
 }
 
 
-<div class="p-5">
-    <div class="text-center">
-        <h1 class="h4 text-gray-900 mb-4">Create Product</h1>
-    </div>
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Create Product</h1>
+        </div>
 
         @if (TempData["Info"] != null)
         {
             <span class="text-danger">@TempData["Info"]</span>
         }
-        @using (Html.BeginForm("AddProduct", "UnitHead", FormMethod.Post))
+        @using (Html.BeginForm("AddProduct", "UnitHead", FormMethod.Post, new { @class = "user" }))
         {
 
 
@@ -51,23 +51,42 @@
                     @Html.ValidationMessageFor(x => x.CriticLevel, null, new { @class = "text-danger" })
                 </div>
             </div>
-            <div>
-                //todo: Category Name Selection..
-            </div>
-            <!--
-                    <div class="form-group row col-sm-12">
-                        <div class="col-sm-12">
-                             Html.ListBoxFor(x => x.Category,Model.Category,new { class= "form-control form-control-user"})
-                             Html.ValidationMessageFor(x => x.CriticLevel, null, new { class = "text-danger" })
+            if (ViewBag.Category != null)
+            {
+                <div class="form-group row col-sm-4">
+                    <div class="col-sm-12">
+                        <h4>Select the Category</h4>
+                        <div class="list-group">
+                            @foreach (var item in ViewBag.Category as IEnumerable<Teknoroma.MODEL.Entity.Category>)
+                            {
+                                @item.Name @Html.RadioButtonFor(x => x.Category,item.ID)
+                            }
                         </div>
                     </div>
-        -->
-            <div class="form-group row col-sm-12">
+                </div>
+            }
+            if (ViewBag.Supplier != null)
+            {
+                <div class="form-group row col-sm-4">
+                    <div class="col-sm-12">
+                        <h4>Select the Supplier</h4>
+                        <div class="list-group">
+                            @foreach (var item in ViewBag.Supplier as IEnumerable<Teknoroma.MODEL.Entity.Supplier>)
+                            {
+                                @item.Name @Html.RadioButtonFor(x => x.Supplier, item.ID)
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group row col-sm-4">
+                <h4>Select the Statu of the Product</h4>
                 <div class="col-sm-12">
                     Passive @Html.RadioButtonFor(x => x.Statu, 1)
                 </div>
                 <div class="col-sm-12">
-                    Active @Html.RadioButtonFor(x => x.Statu, 2)
+                    Active  @Html.RadioButtonFor(x => x.Statu, 2)
                 </div>
             </div>
 
@@ -75,5 +94,5 @@
         }
 
 
-</div>
+    </div>
 
