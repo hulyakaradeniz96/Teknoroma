@@ -26,15 +26,26 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@item.ID</td>
-                        <td>@item.Name</td>
-                        <td>@item.UnitInStock</td>
-                        <td>@item.CriticLevel</td>
-                        <td>@item.UnitPrice</td>
-                        <td>@item.Supplier</td>
-                        <td>@item.Category</td>
-                    </tr>
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Name</td>
+                            <td>@item.UnitInStock</td>
+                            <td>@item.CriticLevel</td>
+                            <td>@item.UnitPrice</td>
+                            @*<td>
+                                @if (item.Supplier.Name != null)
+                                {
+                                    @item.Supplier.Name
+
+                                }
+                                @if (item.Supplier.Name == null)
+                                {
+                                   
+                                }
+                            </td>*@
+
+                            @*@if (@item.Category.Name != null)<td>@{ item.Category.Name; }</td>*@
+                        </tr>
                     }
                 </tbody>
             </table>

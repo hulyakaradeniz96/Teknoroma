@@ -1946,6 +1946,7 @@
     <Content Include="Views\UnitHead\InventoryTracking.cshtml" />
     <Content Include="Views\UnitHead\SalesTracking.cshtml" />
     <Content Include="Views\UnitHead\SupplierActivities.cshtml" />
+    <Content Include="Views\UnitHead\PartialCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

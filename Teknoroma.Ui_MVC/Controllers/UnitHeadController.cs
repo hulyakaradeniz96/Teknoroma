@@ -35,6 +35,7 @@ namespace Teknoroma.Ui_MVC.Controllers
             return RedirectToAction("AddCategory");
         }
 
+        
         public ActionResult AddProduct()
         {
             List<Category> categories = categoryService.GetAll();
@@ -53,6 +54,10 @@ namespace Teknoroma.Ui_MVC.Controllers
             productService.Add(product);
             Saved();
             return RedirectToAction("AddProduct");
+        }
+        public PartialViewResult PartialCategory()
+        {
+            return PartialView(categoryService.GetAll());
         }
 
 
@@ -102,10 +107,14 @@ namespace Teknoroma.Ui_MVC.Controllers
         //Reports
         public ActionResult InventoryTracking()
         {
+            //todo:categoryname ve suppliername'e ulaşamıyorum?
             return View(productService.GetAll());
         }
         public ActionResult SalesTracking()
         {
+            //todo: hangi ürünler satılmış,
+            //todo: En çok satılan 10 ürün, bu ürünlerin tedarikçisi ve bu ürünü alan Müşterileri kitlesi yaş, cinsiyet gibi
+            //todo: En çok satılan 10 ürün ve bunların yanında en çok satılan ürünler.)
             return View(employeeService.GetAll());
         }
         public ActionResult SupplierActivities()

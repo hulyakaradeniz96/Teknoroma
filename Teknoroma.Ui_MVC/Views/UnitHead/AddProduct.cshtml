@@ -53,14 +53,16 @@
             </div>
             if (ViewBag.Category != null)
             {
+                
                 <div class="form-group row col-sm-4">
                     <div class="col-sm-12">
                         <h4>Select the Category</h4>
                         <div class="list-group">
-                            @foreach (var item in ViewBag.Category as IEnumerable<Teknoroma.MODEL.Entity.Category>)
+                            @Html.Action("PartialCategory") 
+                            @*@foreach (var item in ViewBag.Category as IEnumerable<Teknoroma.MODEL.Entity.Category>)
                             {
-                                @item.Name @Html.RadioButtonFor(x => x.Category,item.ID)
-                            }
+                                @item.Name @Html.RadioButtonFor(x => x.Category, item.ID) 
+                            }*@
                         </div>
                     </div>
                 </div>
