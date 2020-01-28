@@ -13,7 +13,6 @@ namespace Teknoroma.MODEL.Map
         public EmployeeMap()
         {
             ToTable("Employees");
-            Property(x => x.CashierID).HasColumnName("CashierNumber").IsOptional();
             Property(x => x.Password).IsRequired().HasMaxLength(15);
             Property(x => x.Name).HasColumnName("FirstName").IsRequired().HasMaxLength(20);
             Property(x => x.LastName).IsRequired().HasMaxLength(20);

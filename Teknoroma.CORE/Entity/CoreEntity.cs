@@ -20,6 +20,7 @@ namespace Teknoroma.CORE.Entity
         public int ID { get; set; }
 
         //Durum 
+        public Status? Statu { get; set; }
         public string Name { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string CreatedComputerName { get; set; }

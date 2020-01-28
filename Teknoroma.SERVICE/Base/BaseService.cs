@@ -65,12 +65,14 @@ namespace Teknoroma.SERVICE.Base
 
         public void Remove(T item)
         {
+            item.Statu = CORE.Entity.Enum.Status.Deleted;
             Update(item);
         }
 
         public void Remove(int id)
         {
             T item = GetById(id);
+            item.Statu = CORE.Entity.Enum.Status.Deleted;
             Update(item);
         }
 
@@ -86,6 +88,7 @@ namespace Teknoroma.SERVICE.Base
         {
             //aşağıdaki işlemde parametreden gelen bilgiler ile veritabanında kayıtlı olan bilgiler kıyaslanarak değişiklikleri güncel şeklinde (CurrentValues) set (ayarla) işlemi gerçekleştirildi.
             T updated = GetById(item.ID);
+            item.Statu = CORE.Entity.Enum.Status.Updated;
             DbEntityEntry entry = Db.Entry(updated);
             entry.CurrentValues.SetValues(item);
             Db.SaveChanges();

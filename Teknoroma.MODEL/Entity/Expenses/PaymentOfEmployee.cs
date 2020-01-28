@@ -11,6 +11,8 @@ namespace Teknoroma.MODEL.Entity.Expenses
     {
         //name => Explanation
         public decimal PaidAmount { get; set; } //PaidAmount
-        public Employee Employee { get; set; } //PaidTo
+        public int? EmployeeID { get; set; }
+
+        public virtual Employee Employee { get; set; } //PaidTo
     }
 }

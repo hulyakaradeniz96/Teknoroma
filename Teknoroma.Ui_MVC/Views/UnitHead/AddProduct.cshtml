@@ -1,100 +1,103 @@
 ﻿@model Teknoroma.MODEL.Entity.Product
 @{
     ViewBag.Title = "AddProduct";
-    Layout = "~/Views/UnitHead/Shared/Shared.cshtml"; 
+    Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
 }
 
 
-    <div class="p-5">
-        <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Create Product</h1>
+<div class="p-5">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create Product</h1>
+    </div>
+
+    @if (TempData["Info"] != null)
+    {
+        <span class="text-danger">@TempData["Info"]</span>
+    }
+    @using (Html.BeginForm("AddProduct", "UnitHead", FormMethod.Post, new { @class = "user" }))
+    {
+
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = "Product Name", @type = "text" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+            </div>
         </div>
 
-        @if (TempData["Info"] != null)
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control form-control-user", placeholder = "Unit Price", @type = "number" })
+                @Html.ValidationMessageFor(x => x.UnitPrice, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.UnitInStock, new { @class = "form-control form-control-user", placeholder = "Unit in Stock", @type = "number" })
+                @Html.ValidationMessageFor(x => x.UnitInStock, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.QuantityPerUnit, new { @class = "form-control form-control-user", placeholder = "Quantity per Unit", @type = "text" })
+                @Html.ValidationMessageFor(x => x.QuantityPerUnit, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.CriticLevel, new { @class = "form-control form-control-user", placeholder = "Critic Level", @type = "number" })
+                @Html.ValidationMessageFor(x => x.CriticLevel, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        if (ViewBag.Category != null)
         {
-            <span class="text-danger">@TempData["Info"]</span>
-        }
-        @using (Html.BeginForm("AddProduct", "UnitHead", FormMethod.Post, new { @class = "user" }))
-        {
-
-
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = "Product Name", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control form-control-user", placeholder = "Unit Price", @type = "number" })
-                    @Html.ValidationMessageFor(x => x.UnitPrice, null, new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.UnitInStock, new { @class = "form-control form-control-user", placeholder = "Unit in Stock", @type = "number" })
-                    @Html.ValidationMessageFor(x => x.UnitInStock, null, new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.QuantityPerUnit, new { @class = "form-control form-control-user", placeholder = "Quantity per Unit", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.QuantityPerUnit, null, new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.CriticLevel, new { @class = "form-control form-control-user", placeholder = "Critic Level", @type = "number" })
-                    @Html.ValidationMessageFor(x => x.CriticLevel, null, new { @class = "text-danger" })
-                </div>
-            </div>
-            if (ViewBag.Category != null)
-            {
-                
-                <div class="form-group row col-sm-4">
-                    <div class="col-sm-12">
-                        <h4>Select the Category</h4>
-                        <div class="list-group">
-                            @Html.Action("PartialCategory") 
-                            @*@foreach (var item in ViewBag.Category as IEnumerable<Teknoroma.MODEL.Entity.Category>)
-                            {
-                                @item.Name @Html.RadioButtonFor(x => x.Category, item.ID) 
-                            }*@
-                        </div>
-                    </div>
-                </div>
-            }
-            if (ViewBag.Supplier != null)
-            {
-                <div class="form-group row col-sm-4">
-                    <div class="col-sm-12">
-                        <h4>Select the Supplier</h4>
-                        <div class="list-group">
-                            @foreach (var item in ViewBag.Supplier as IEnumerable<Teknoroma.MODEL.Entity.Supplier>)
-                            {
-                                @item.Name @Html.RadioButtonFor(x => x.Supplier, item.ID)
-                            }
-                        </div>
-                    </div>
-                </div>
-            }
 
             <div class="form-group row col-sm-4">
-                <h4>Select the Statu of the Product</h4>
                 <div class="col-sm-12">
-                    Passive @Html.RadioButtonFor(x => x.Statu, 1)
-                </div>
-                <div class="col-sm-12">
-                    Active  @Html.RadioButtonFor(x => x.Statu, 2)
+                    <h4>Select the Category</h4>
+                    <div class="list-group">
+
+                        @foreach (var item in ViewBag.Category as IEnumerable<Teknoroma.MODEL.Entity.Category>)
+                        {
+                            @*@Html.LabelFor(x=> x.ID.ToString())*@
+                            @*@Html.ValidationMessageFor(x => x.Category)*@
+                            <div>@item.Name</div>
+                        }
+                    </div>
                 </div>
             </div>
-
-            <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+        }
+        if (ViewBag.Supplier != null)
+        {
+            <div class="form-group row col-sm-4">
+                <div class="col-sm-12">
+                    <h4>Select the Supplier</h4>
+                    <div class="list-group">
+                        @foreach (var item in ViewBag.Supplier as IEnumerable<Teknoroma.MODEL.Entity.Supplier>)
+                        {
+                            <div>@item.Name</div>
+                            @* @Html.RadioButtonFor(x => x.Supplier, item.ID)*@
+                        }
+                    </div>
+                </div>
+            </div>
         }
 
+        <div class="form-group row col-sm-4">
+            <h4>Select the Statu of the Product</h4>
+            <div class="col-sm-12">
+                Passive @Html.RadioButtonFor(x => x.Statu, 1)
+            </div>
+            <div class="col-sm-12">
+                Active  @Html.RadioButtonFor(x => x.Statu, 2)
+            </div>
+        </div>
 
-    </div>
+        <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+    }
+
+
+</div>
 

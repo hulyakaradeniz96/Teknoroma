@@ -18,6 +18,9 @@ namespace Teknoroma.MODEL.Entity
 
         public string ShipAddress { get; set; }
 
+        public int? CustomerID { get; set; }
+        public int? EmployeeID { get; set; }
+
 
         //Every Order has one Customer
         public virtual Customer Customer { get; set; }

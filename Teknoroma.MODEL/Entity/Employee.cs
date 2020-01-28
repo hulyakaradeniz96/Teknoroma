@@ -8,20 +8,34 @@ using Teknoroma.CORE.Entity.Enum;
 
 namespace Teknoroma.MODEL.Entity
 {
+   
     public class Employee : CoreEntity
     {
         //Name:FirstName
         public string LastName { get; set; }
 
-
         public string Password { get; set; }
 
-        //Employee==CashierRepresentative => every Cashier needs own CashierID
-        private int cashierNumber;
-        public EmployeeTitle Title { get; set; }
-        public int? CashierID { get; set; }
 
-        //If a saler overcome the 10.000 TL s/he gets premium within the TotalWage.
+        public EmployeeTitle Title { get; set; }
+    public Nullable<int> CashierID
+        {
+            get
+            {
+                if (Title == EmployeeTitle.CashierSalesRepresentative)
+                {
+                    cashierNumber++;
+                    return cashierNumber;
+                }
+                return null;
+            }
+            set
+            {
+
+            }
+        }
+
+            //If a saler overcome the 10.000 TL s/he gets premium within the TotalWage.
         public decimal? Salary { get; set; }
 
         //read only (none can set it) //calculating overcome according to SalesQuota
@@ -48,5 +62,9 @@ namespace Teknoroma.MODEL.Entity
                 return Salary + PremiumSalary;
             }
         }
+
+        public static int cashierNumber;
     }
+
 }
+

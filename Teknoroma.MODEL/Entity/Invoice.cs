@@ -12,10 +12,12 @@ namespace Teknoroma.MODEL.Entity
         //name =>Seri
         //ID => Sıra
         //CreatedDate => DateOfIssue
-        public DateTime DeliveryDate { get; set; }
+        public virtual DateTime DeliveryDate { get; set; }
+        public int? OrderID { get; set; }
+
 
         //every invoice has its own order
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
         //Caution: Do I get all the informations I need?
         /*
          * What I need?

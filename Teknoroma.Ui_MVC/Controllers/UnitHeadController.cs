@@ -38,26 +38,18 @@ namespace Teknoroma.Ui_MVC.Controllers
         
         public ActionResult AddProduct()
         {
-            List<Category> categories = categoryService.GetAll();
-            ViewBag.Category = categories;
-            List<Supplier> suppliers = supplierService.GetAll();
-            ViewBag.Supplier = suppliers;
+            ViewBag.Category = categoryService.GetAll();
+            ViewBag.Supplier = supplierService.GetAll();
             return View();
         }
-        //todo:Product Category ve Supplier null geliyo??
+        //todo:Product Category ve Supplier DropDownList=> Delirtti beni WHY??
         [HttpPost]
         public ActionResult AddProduct(Product product)
         {
             EmptyInfo();
-            //product.Category = categoryService.Db.Categories.Find((int)TempData["cat"]);
-            //product.Supplier = supplierService.Db.Suppliers.Find(suppID);
             productService.Add(product);
             Saved();
             return RedirectToAction("AddProduct");
-        }
-        public PartialViewResult PartialCategory()
-        {
-            return PartialView(categoryService.GetAll());
         }
 
 
@@ -107,7 +99,6 @@ namespace Teknoroma.Ui_MVC.Controllers
         //Reports
         public ActionResult InventoryTracking()
         {
-            //todo:categoryname ve suppliername'e ulaşamıyorum?
             return View(productService.GetAll());
         }
         public ActionResult SalesTracking()

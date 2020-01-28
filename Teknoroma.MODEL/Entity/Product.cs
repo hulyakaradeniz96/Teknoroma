@@ -17,6 +17,7 @@ namespace Teknoroma.MODEL.Entity
         public Product()
         {
             GenerateBarcode();
+            
         }
         /// <summary>
         /// It Generates 5 digits number and converts to the string.
@@ -72,14 +73,16 @@ namespace Teknoroma.MODEL.Entity
         public string QuantityPerUnit { get; set; } //2kg. box etc.
         public decimal? UnitPrice { get; set; }
         public short? UnitInStock { get; set; }
-        public Status? Statu { get; set; }
+
         public short CriticLevel { get; set; }
+        public int? CategoryID { get; set; }
+        public int? SupplierID { get; set; }
 
 
 
         //Every product has one Category
         //Every product has one Supplier
-        public Category Category { get; set; }
-        public Supplier Supplier { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

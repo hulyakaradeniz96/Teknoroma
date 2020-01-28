@@ -1935,6 +1935,7 @@
     <Content Include="Content\admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\admin\vendor\jquery\jquery.min.map" />
     <Content Include="Content\admin\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UnitHead\Shared\Shared.cshtml" />
@@ -1946,7 +1947,6 @@
     <Content Include="Views\UnitHead\InventoryTracking.cshtml" />
     <Content Include="Views\UnitHead\SalesTracking.cshtml" />
     <Content Include="Views\UnitHead\SupplierActivities.cshtml" />
-    <Content Include="Views\UnitHead\PartialCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
