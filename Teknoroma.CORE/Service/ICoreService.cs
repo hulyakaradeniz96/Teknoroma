@@ -25,9 +25,8 @@ namespace Teknoroma.CORE.Service
         T GetById(int id);
 
         List<T> GetDefault(Expression<Func<T, bool>> exp);
-
         List<T> GetAll();
-
+        List<T> SelectAll();
         bool Any(Expression<Func<T, bool>> exp);
 
     }

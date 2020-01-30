@@ -4,7 +4,6 @@
     Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
 }
 
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Inventory Tracking</h6>
@@ -26,32 +25,40 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>@item.ID</td>
-                        <td>@item.Name</td>
-                        <td>@item.UnitInStock</td>
-                        <td>@item.CriticLevel</td>
-                        <td>@item.UnitPrice</td>
-                        @if (item.CategoryID != null)
-                        {
-                            <td>@item.Category.Name</td>
-                        }
-                        else
-                        {
-                            <td><i>not specified</i></td>
-                        }
-                        @if (item.SupplierID != null)
-                        {
-                            <td>@item.Supplier.Name</td>
-                        }
-                        else
-                        {
-                            <td><i>not specified</i></td>
-                        }
-                    </tr>
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Name</td>
+                            <td>@item.UnitInStock</td>
+                            @if (item.CriticLevel >= item.UnitInStock)
+                            {
+                                <td>true (@item.UnitInStock)</td>
+                            }
+                            else
+                            {
+                                <td>false</td>
+                            }
+                            <td>@item.UnitPrice</td>
+                            @if (item.CategoryID != null)
+                            {
+                                <td>@item.Category.Name</td>
+                            }
+                            else
+                            {
+                                <td><i>not specified</i></td>
+                            }
+                            @if (item.SupplierID != null)
+                            {
+                                <td>@item.Supplier.Name</td>
+                            }
+                            else
+                            {
+                                <td><i>not specified</i></td>
+                            }
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+

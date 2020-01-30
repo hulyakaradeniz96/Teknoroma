@@ -2,64 +2,111 @@
 @{
     ViewBag.Title = "AddEmployee";
     Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+    var titles = ViewBag.Titles;
+    var employees = TempData["Employee"];
 }
 
 
-    <div class="p-5">
-        <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Create Employee</h1>
+<div class="col-lg-3">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create Employee</h1>
+    </div>
+
+    @if (TempData["Info"] != null)
+    {
+        <span class="text-danger">@TempData["Info"]</span>
+    }
+    @using (Html.BeginForm("AddEmployee", "UnitHead", FormMethod.Post, new { @class = "user" }))
+    {
+
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = "First Name", @type = "text" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control form-control-user", placeholder = "Last Name", @type = "text" })
+                @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control form-control-user", placeholder = "Password", @type = "text" })
+                @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+            </div>
         </div>
 
-        @if (TempData["Info"] != null)
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Salary, new { @class = "form-control form-control-user", placeholder = "Salary", @type = "number" })
+                @Html.ValidationMessageFor(x => x.Salary, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        if (ViewBag.Titles != null)
         {
-            <span class="text-danger">@TempData["Info"]</span>
-        }
-        @using (Html.BeginForm("AddEmployee", "UnitHead", FormMethod.Post, new { @class = "user" }))
-        {
-
-
             <div class="form-group row col-sm-12">
                 <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = "First Name", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control form-control-user", placeholder = "Last Name", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control form-control-user", placeholder = "Password", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group row col-sm-12">
-                <div class="col-sm-12">
-                    @Html.TextBoxFor(x => x.Salary, new { @class = "form-control form-control-user", placeholder = "Salary", @type = "number" })
-                    @Html.ValidationMessageFor(x => x.Salary, null, new { @class = "text-danger" })
-                </div>
-            </div>
-            if (ViewBag.Titles != null)
-            {
-                <div class="form-group row col-sm-12">
-                    <div class="col-sm-12">
-                        <h3>Select the Title</h3>
-                        <div class="list-group">
-                            @foreach (var item in ViewBag.Titles as IEnumerable<Teknoroma.CORE.Entity.Enum.EmployeeTitle>)
+                    <h3>Select the Title</h3>
+                    <div class="list-group">
+                        <select name="Title">
+                            @foreach (var item in titles)
                             {
-                                @item @Html.RadioButtonFor(x => x.Title, item)
+                                <option value="@item">@item</option>
                             }
-                        </div>
+
+                        </select>
                     </div>
                 </div>
-            }
-            <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+            </div>
         }
+        <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+    }
 
-    </div>
+</div>
+<div class="col-lg-6">
+    @if (TempData["Employee"] != null)
+    {
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Password</th>
+                                <th>Salary</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in employees as IEnumerable<Teknoroma.MODEL.Entity.Employee>)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.LastName</td>
+                                    <td>@item.Password</td>
+                                    <td>@item.Salary</td>
+                                    <td>@Html.ActionLink("Update", "UpdateEmployee", new { id = item.ID }, new { @class = "btn btn-dark btn-user" })</td>
+                                    <td>@Html.ActionLink("Delete", "DeleteEmployee", new { id = item.ID }, new { @class = "btn btn-danger btn-user" })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 

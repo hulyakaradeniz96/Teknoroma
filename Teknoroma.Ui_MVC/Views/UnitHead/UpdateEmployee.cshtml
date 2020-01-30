@@ -1,0 +1,61 @@
+﻿@model Teknoroma.MODEL.Entity.Employee
+@{
+    ViewBag.Title = "UpdateEmployee";
+    Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+    var titles = ViewBag.Titles;
+}
+
+<div class="col-lg-3">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Update Employee</h1>
+    </div>
+    @using (Html.BeginForm("UpdateEmployee", "UnitHead", FormMethod.Post, new { @class = "user" }))
+    {
+
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = Model.Name, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control form-control-user", placeholder = Model.LastName, @type = "text" })
+                @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control form-control-user", placeholder = Model.Password, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Salary, new { @class = "form-control form-control-user", placeholder = Model.Salary, @type = "number" })
+                @Html.ValidationMessageFor(x => x.Salary, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        if (ViewBag.Titles != null)
+        {
+            <div class="form-group row col-sm-12">
+                <div class="col-sm-12">
+                    <h3>Select the Title</h3>
+                    <div class="list-group">
+                        <select name="Title">
+                            @foreach (var item in titles)
+                            {
+                                <option value="@item">@item</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        }
+        <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+    }
+
+</div>

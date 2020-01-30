@@ -1947,6 +1947,14 @@
     <Content Include="Views\UnitHead\InventoryTracking.cshtml" />
     <Content Include="Views\UnitHead\SalesTracking.cshtml" />
     <Content Include="Views\UnitHead\SupplierActivities.cshtml" />
+    <Content Include="Views\UnitHead\UpdateCategory.cshtml" />
+    <Content Include="Views\UnitHead\UpdateProduct.cshtml" />
+    <Content Include="Views\UnitHead\UpdateSupplier.cshtml" />
+    <Content Include="Views\UnitHead\UpdateEmployee.cshtml" />
+    <Content Include="Views\UnitHead\_EmployeePayment.cshtml" />
+    <Content Include="Views\UnitHead\_TechnicalInfrastucture.cshtml" />
+    <Content Include="Views\UnitHead\_OtherExpense.cshtml" />
+    <Content Include="Views\UnitHead\Expenditures.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,32 @@
+﻿@model Teknoroma.MODEL.Entity.Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+}
+
+
+<div class="col-lg-6">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Update Category</h1>
+    </div>
+    @using (Html.BeginForm("UpdateCategory", "UnitHead", FormMethod.Post, new { @class = "user" }))
+    {
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder =Model.Name, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextAreaFor(x => x.Description, new { @class = "form-control form-control-user", placeholder =Model.Description, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+    }
+</div>
+

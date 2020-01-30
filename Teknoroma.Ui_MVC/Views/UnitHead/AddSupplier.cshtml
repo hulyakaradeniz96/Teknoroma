@@ -2,10 +2,11 @@
 @{
     ViewBag.Title = "AddSupplier";
     Layout = "~/Views/UnitHead/Shared/Shared.cshtml";
+    var suppliers = TempData["Supplier"];
 }
 
 
-<div class="p-5">
+<div class="col-lg-3">
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Create Supplier</h1>
     </div>
@@ -59,6 +60,52 @@
             <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
         }
 
+</div>
+<div class="col-lg-6">
+    @if (TempData["Supplier"] != null)
+    {
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Supplier List</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Contact Title</th>
+                                <th>Phone</th>
+                                <th>Fax</th>
+                                <th>Address</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in suppliers as IEnumerable<Teknoroma.MODEL.Entity.Supplier>)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.ContactName</td>
+                                    <td>@item.ContactTitle</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Fax</td>
+                                    <td>@item.Address</td>
+                                    <td>@Html.ActionLink("Update", "UpdateSupplier", new { id = item.ID }, new { @class = "btn btn-dark btn-user" })</td>
+                                    <td>@Html.ActionLink("Delete", "DeleteSupplier", new { id = item.ID }, new { @class = "btn btn-danger btn-user" })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 

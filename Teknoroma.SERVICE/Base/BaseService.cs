@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Teknoroma.CORE.Entity;
+using Teknoroma.CORE.Entity.Enum;
 using Teknoroma.CORE.Service;
 using Teknoroma.MODEL.Context;
 
@@ -42,10 +43,21 @@ namespace Teknoroma.SERVICE.Base
         }
 
         public bool Any(Expression<Func<T, bool>> exp) => Db.Set<T>().Any(exp);
-
+        /// <summary>
+        /// Gets All objects which are created.
+        /// </summary>
+        /// <returns></returns>
         public List<T> GetAll()
         {
             return Db.Set<T>().ToList();
+        }
+        /// <summary>
+        /// Selects All objects which are not Deleted.
+        /// </summary>
+        /// <returns></returns>
+        public List<T> SelectAll()
+        {
+            return Db.Set<T>().Where(x => x.Statu != Status.Deleted).ToList();
         }
 
         public T GetById(int id)
@@ -63,17 +75,19 @@ namespace Teknoroma.SERVICE.Base
             return Db.Set<T>().Where(exp).ToList();
         }
 
+   
+
         public void Remove(T item)
         {
             item.Statu = CORE.Entity.Enum.Status.Deleted;
-            Update(item);
+            Db.SaveChanges();
         }
 
         public void Remove(int id)
         {
             T item = GetById(id);
             item.Statu = CORE.Entity.Enum.Status.Deleted;
-            Update(item);
+            Db.SaveChanges();
         }
 
         public void RemoveAll(Expression<Func<T, bool>> exp)

@@ -12,6 +12,8 @@ namespace Teknoroma.MODEL.Entity
         //name => CompanyName
         public string ContactName { get; set; }
         public string TCKN { get; set; }
+        public bool Gender { get; set; }//true=>woman false=>man
+        public DateTime? BirthDate { get; set; }
         public string ContactTitle { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
