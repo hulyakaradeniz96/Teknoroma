@@ -1733,6 +1733,10 @@
     <Content Include="Content\admin\vendor\jquery\jquery.min.js" />
     <Content Include="Content\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Content\image\calculator-pencil-512.png" />
+    <Content Include="Content\image\ezgif.com-webp-to-jpg.jpg" />
+    <Content Include="Content\image\mission_vision_core_values.jpg" />
+    <Content Include="Content\image\TechnicalSupport_PRUFTECHNIK-Service_Gallery3_1000px-562px.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1955,6 +1959,14 @@
     <Content Include="Views\UnitHead\_TechnicalInfrastucture.cshtml" />
     <Content Include="Views\UnitHead\_OtherExpense.cshtml" />
     <Content Include="Views\UnitHead\Expenditures.cshtml" />
+    <Content Include="Views\AccountingRepresentative\Shared\Shared.cshtml" />
+    <Content Include="Views\AccountingRepresentative\Index.cshtml" />
+    <Content Include="Views\MobileSalesRepresentative\Shared\Shared.cshtml" />
+    <Content Include="Views\MobileSalesRepresentative\Index.cshtml" />
+    <Content Include="Views\CashierSalesRepresentative\Shared\Shared.cshtml" />
+    <Content Include="Views\CashierSalesRepresentative\Index.cshtml" />
+    <Content Include="Views\TechnicalServiceRepresentative\Shared\Shared.cshtml" />
+    <Content Include="Views\TechnicalServiceRepresentative\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1965,10 +1977,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\AccountingRepresentative\" />
-    <Folder Include="Views\CashierSalesRepresentative\" />
-    <Folder Include="Views\MobileSalesRepresentative\" />
-    <Folder Include="Views\TechnicalServiceRepresentative\" />
     <Folder Include="Views\WarehouseRepresentative\" />
   </ItemGroup>
   <ItemGroup>

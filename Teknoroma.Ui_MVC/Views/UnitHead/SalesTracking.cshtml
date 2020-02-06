@@ -6,95 +6,112 @@
     int quantity = 0;
 }
 
-    <div class="container">
+<div class="container">
 
-        <div >
-            <div >
-                <center> <h2 class="m-0 font-weight-bold text-primary">Sales Tracking</h2></center>
-</div>
-            <hr />
-<div class="row">
-    <div class="col-lg-12">
-        <div class="col-lg-6">
+    <div>
+        <div>
+            <center> <h2 class="m-0 font-weight-bold text-primary">Sales Tracking</h2></center>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-6">
 
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Employees</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Employee </th>
-                                    <th>Product Name</th>
-                                    <th>SalesQuota</th>
-                                    <th>Premium Salary</th>
-                                </tr>
-                            </thead>
-                            @if (Model != null)
-                            {
-
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Employees</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
                                         <tr>
-                                            <td>@item.ID</td>
-                                            <td>@item.Order.Employee.Name @item.Order.Employee.LastName</td>
-                                            <td>@item.Product.Name</td>
-                                            <td>@item.Order.Employee.SalesQuota</td>
-                                            <td>@item.Order.Employee.PremiumSalary</td>
+                                            <th>ID</th>
+                                            <th>Employee </th>
+                                            <th>Product Name</th>
+                                            <th>SalesQuota</th>
+                                            <th>Premium Salary</th>
                                         </tr>
+                                    </thead>
+                                    @if (Model != null)
+                                    {
+
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.ID</td>
+                                                    <td>@item.Order.Employee.Name @item.Order.Employee.LastName</td>
+                                                    <td>@item.Product.Name</td>
+                                                    @if (item.Order.Employee.SalesQuota != null)
+                                                    {
+
+                                                        <td>@item.Order.Employee.SalesQuota</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>0.00</td>
+                                                    }
+
+
+                                                    <td>@item.Order.Employee.PremiumSalary</td>
+                                                </tr>
+                                            }
+                                        </tbody>
                                     }
-                                </tbody>
-                            }
-                        </table>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Top 10 Products</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Employee </th>
+                                            <th>Product Name</th>
+                                            <th>SalesQuota</th>
+                                            <th>Premium Salary</th>
+                                        </tr>
+                                    </thead>
+                                    @if (TempData["Products"] != null)
+                                    {
+
+                                        <tbody>
+                                            @foreach (var item in (List<IGrouping<int,Teknoroma.MODEL.Entity.OrderDetail>>)products)
+                                            {
+                                                <tr>
+                                                    <td>@item.Key</td>
+                                                    @*<td>@item.Product.Supplier.Name</td>
+                                                    @if (item.Order.Employee.SalesQuota != null)
+                                                    {
+
+                                                        <td>@item.Order.Employee.SalesQuota</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>0.00</td>
+                                                    }
+                                                    <td>@item.Order.Employee.PremiumSalary</td>*@
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    }
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
 
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Top 10 Products</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Employee </th>
-                                    <th>Product Name</th>
-                                    <th>SalesQuota</th>
-                                    <th>Premium Salary</th>
-                                </tr>
-                            </thead>
-                            @if (TempData["Products"] != null)
-                            {
-
-                                <tbody>
-                                    @foreach (var item in products as IEnumerable<Teknoroma.MODEL.Entity.OrderDetail>)
-                                    {
-                                        <tr>
-                                            <td>@item.Product.Name</td>
-                                            <td>@item.Product.Supplier.Name</td>
-                                            
-                                            <td>@item.Order.Employee.SalesQuota</td>
-                                            <td>@item.Order.Employee.PremiumSalary</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            }
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
-        </div>
-    </div>

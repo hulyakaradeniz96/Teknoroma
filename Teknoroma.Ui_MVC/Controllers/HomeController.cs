@@ -21,7 +21,14 @@ namespace Teknoroma.Ui_MVC.Controllers
         {
             var user = employeeService.Db.Employees.FirstOrDefault(x => x.Name == model.Name && x.LastName == model.LastName && x.Password == model.Password);
             Session["login"] = user;
-            if (user.Title == EmployeeTitle.UnitHead) return RedirectToAction("Index", "UnitHead");
+
+
+            if (user == null)
+            {
+                ViewBag.UserError = "No user can be found.";
+                return View();
+            }
+            else if (user.Title == EmployeeTitle.UnitHead) return RedirectToAction("Index", "UnitHead");
             else if (user.Title == EmployeeTitle.CashierSalesRepresentative) return RedirectToAction("Index", "CashierSalesRepresentative");
             else if (user.Title == EmployeeTitle.MobileSalesRepresentative) return RedirectToAction("Index", "MobileSalesRepresentative");
             else if (user.Title == EmployeeTitle.WarehouseRepresentative) return RedirectToAction("Index", "WarehouseRepresentative");
@@ -29,9 +36,9 @@ namespace Teknoroma.Ui_MVC.Controllers
             else if (user.Title == EmployeeTitle.TechnicalServiceRepresentative) return RedirectToAction("Index", "TechnicalServiceRepresentative");
             else
             {
-                ViewBag.UserError = "No user can be found.";
                 return View();
             }
+
         }
 
     }

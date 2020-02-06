@@ -15,41 +15,40 @@
 <body>
     <div class="row col-lg-offset-1">
         <div class="col-lg-offset-1">
-            <div class="col-lg-9">
-                <div class="panel">
-                    <div class="panel panel-heading" style="background-color:burlywood">
-                        <h2><center>Welcome to TEKNOROMA</center></h2>
-                        <center>
-                            <div class="panel panel-body" style="background-color:burlywood">
-                                @if (ViewBag.UserError != null)
-                                {
-                                    <h4><i><span class="text-danger">@ViewBag.UserError</span></i></h4>
-                                }
-                            </div>
-                        </center>
-                        <center>
-                            <div>
-                                @using (Html.BeginForm())
-                                {
-                                    <label> First Name </label>
-                                    <div class="input-group">
-                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "FirstName", type = "text", style = "width:300px;" })
-                                    </div>
-                                    <label> Last Name </label>
-                                    <div class="input-group">
-                                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", placeholder = "LastName", type = "text", style = "width:300px;" })
-                                    </div>
-                                    <label> Password </label>
-                                    <div class="input-group">
-                                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Password", type = "password", style = "width:300px;" })
-                                    </div>
-                                    <br />
-                                    <input type="submit" value="Login" class="btn btn-primary" />
-                                }
-                            </div>
-                        </center>
-                    </div>
+            <div class="col-lg-9" style="margin-top:80px;">
+                <div class="panel panel-heading" style="background-color:burlywood">
+                    <center><h2>Welcome to TEKNOROMA</h2></center>
+                    <center>
+                        <div class="panel panel-body" style="background-color:burlywood">
+                            @if (ViewBag.UserError != null)
+                            {
+                                <h5><i><span class="text-danger">@ViewBag.UserError</span></i></h5>
+                            }
+                        </div>
+                    </center>
+                    <center>
+                        <div>
+                            @using (Html.BeginForm())
+                            {
+                                <label> First Name </label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "FirstName", type = "text", style = "width:300px;" })
+                                </div>
+                                <label> Last Name </label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", placeholder = "LastName", type = "text", style = "width:300px;" })
+                                </div>
+                                <label> Password </label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Password", type = "password", style = "width:300px;" })
+                                </div>
+                                <br />
+                                <input type="submit" value="Login" class="btn btn-primary" />
+                            }
+                        </div>
+                    </center>
                 </div>
+
             </div>
         </div>
     </div>

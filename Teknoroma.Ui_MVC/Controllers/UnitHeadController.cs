@@ -13,11 +13,15 @@ namespace Teknoroma.Ui_MVC.Controllers
 {
     public class UnitHeadController : Controller
     {
+        //Services
         CategoryService categoryService = new CategoryService();
         ProductService productService = new ProductService();
         SupplierService supplierService = new SupplierService();
         EmployeeService employeeService = new EmployeeService();
         OrderDetailService detailService = new OrderDetailService();
+        PaymentOfEmployeeService paymentOfEmployee = new PaymentOfEmployeeService();
+        TechnicalInfrastructureService technicalInfrastructure = new TechnicalInfrastructureService();
+        OtherExpenseService expenseService = new OtherExpenseService();
         //Homepage=>Index
         public ActionResult Index()
         {
@@ -129,7 +133,7 @@ namespace Teknoroma.Ui_MVC.Controllers
         //Employee
         public ActionResult AddEmployee()
         {
-            ViewBag.Titles=Enum.GetValues(typeof(EmployeeTitle)).Cast<EmployeeTitle>().ToList();
+            ViewBag.Titles = Enum.GetValues(typeof(EmployeeTitle)).Cast<EmployeeTitle>().ToList();
             TempData["Employee"] = employeeService.SelectAll();
             return View();
         }
@@ -148,9 +152,9 @@ namespace Teknoroma.Ui_MVC.Controllers
                     var cashierID = employeeService.GetDefault(x => x.CashierID != null).Last().CashierID++;
                     employee.CashierID = cashierID;
                 }
-             
+
             }
-           
+
             employeeService.Add(employee);
             Saved();
             return RedirectToAction("AddEmployee");
@@ -185,27 +189,31 @@ namespace Teknoroma.Ui_MVC.Controllers
         }
 
         //Reports
-        public ActionResult InventoryTracking()
+        public ActionResult InventoryTracking()//todo: Critic level düştüğünde uyarı vermeli.. suan sadece normal listeliyo
         {
             return View(productService.SelectAll());
         }
         public ActionResult SalesTracking()
         {
+            //todo:System.NullReferenceException: Object reference not set to an instance of an object. hatası
             //todo:need to control after data.
             var employee = detailService.GetDefault(x => x.CreatedDate.Month == DateTime.Now.Month).AsQueryable().GroupBy(x => x.Order.Employee.ID).FirstOrDefault();
             //todo:Product =>  sum(Quantity) , Take(10) after order by Descending --Quantity;
-            var products = detailService.GetDefault(x => x.CreatedDate.Month == DateTime.Now.Month).AsQueryable().GroupBy(x => x.Product.ID);
+            var products = detailService.GetDefault(x => x.CreatedDate.Month == DateTime.Now.Month).AsQueryable().GroupBy(x => x.Product.ID, x =>x.Quantity,(key, g) => new { Product = key, Quantity = g.ToList() }).ToList();
+
+
             TempData["Products"] = products;
             return View(employee);
-        }
+    }
         public ActionResult SupplierActivities()
         {
+            //todo:hata veriyo dict?
             //todo: Supplier'ı group by yapıp 1 ay içerisindeki productların Quantitysini toplayıp tablea yazmam lazım
             return View(supplierService.SelectAll());
         }
 
         public ActionResult ProductList()
-        {
+        {//todo:içi boş
             return View(productService.GetAll());
         }
 
@@ -213,9 +221,6 @@ namespace Teknoroma.Ui_MVC.Controllers
         {
             return View();
         }
-        PaymentOfEmployeeService paymentOfEmployee = new PaymentOfEmployeeService();
-        TechnicalInfrastructureService technicalInfrastructure = new TechnicalInfrastructureService();
-        OtherExpenseService expenseService = new OtherExpenseService();
         public PartialViewResult _EmployeePayment()
         {
             return PartialView(paymentOfEmployee.SelectAll());
