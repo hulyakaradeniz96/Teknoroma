@@ -1967,6 +1967,8 @@
     <Content Include="Views\CashierSalesRepresentative\Index.cshtml" />
     <Content Include="Views\TechnicalServiceRepresentative\Shared\Shared.cshtml" />
     <Content Include="Views\TechnicalServiceRepresentative\Index.cshtml" />
+    <Content Include="Views\CashierSalesRepresentative\Customer.cshtml" />
+    <Content Include="Views\CashierSalesRepresentative\UpdateCustomer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

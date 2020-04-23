@@ -5,12 +5,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Teknoroma.CORE.Entity.Enum;
+using Teknoroma.MODEL.Entity;
+using Teknoroma.SERVICE.Option;
 
 namespace Teknoroma.Ui_MVC.Controllers
 {
     public class CashierSalesRepresentativeController : Controller
     {
-        // GET: CashierSalesRepresentative
+        CustomerService customerService = new CustomerService();
+
+        public Status? Statu { get; private set; }
+
         public ActionResult Index()
         {
             //Güncel Döviz Kurları Gösterme
@@ -38,5 +44,51 @@ namespace Teknoroma.Ui_MVC.Controllers
             ViewBag.Euro = euroDeger;
             return View();
         }
+
+        public ActionResult Customer()
+        {
+            TempData["Customer"] = customerService.SelectAll();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Customer(Customer customer)
+        {
+            EmptyInfo();
+            customer.Statu = Status.Active;
+            customerService.Add(customer);
+            Saved();
+            return RedirectToAction("Customer");
+        }
+
+        
+        public ActionResult UpdateCustomer(int id)
+        {
+            Customer customer = customerService.GetById(id);
+            return View(customer);
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomer(Customer customer)
+        {
+            customerService.Update(customer);
+            return RedirectToAction("Customer");
+        }
+        public ActionResult DeleteCustomer(int id)
+        {
+            Customer customer = customerService.GetById(id);
+            customerService.Remove(customer);
+            return RedirectToAction("Customer");
+        }
+
+
+        //infoMethods
+        void EmptyInfo()
+        {
+            TempData["Info"] = string.Empty;
+        }
+        void Saved()
+        {
+            TempData["Info"] = "Saved.";
+        }
+
     }
 }

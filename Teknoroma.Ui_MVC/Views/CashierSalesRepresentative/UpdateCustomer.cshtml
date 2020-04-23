@@ -1,0 +1,81 @@
+﻿@model Teknoroma.MODEL.Entity.Customer
+@{
+    ViewBag.Title = "UpdateCustomer";
+    Layout = "~/Views/CashierSalesRepresentative/Shared/Shared.cshtml";
+}
+
+
+<div class="col-lg-3">
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Create Customer</h1>
+    </div>
+
+    @if (TempData["Info"] != null)
+    {
+        <span class="text-danger">@TempData["Info"]</span>
+    }
+    @using (Html.BeginForm("Customer", "CashierSalesRepresentative", FormMethod.Post, new { @class = "user" }))
+    {
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-user", placeholder = Model.Name, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control form-control-user", placeholder = Model.ContactName, @type = "text" })
+                @Html.ValidationMessageFor(x => x.ContactName, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.ContactTitle, new { @class = "form-control form-control-user", placeholder = Model.ContactTitle, @type = "text" })
+                @Html.ValidationMessageFor(x => x.ContactTitle, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.TCKN, new { @class = "form-control form-control-user", placeholder = Model.TCKN, @type = "text" })
+                @Html.ValidationMessageFor(x => x.TCKN, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <h5>Gender</h5>
+            <div class="col-sm-12">
+                Woman @Html.RadioButtonFor(x => x.Gender, true)
+
+                Man  @Html.RadioButtonFor(x => x.Gender, false)
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+
+                @Html.TextBoxFor(x => x.BirthDate, new { placeholder = Model.BirthDate, id = "datepicker2", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextAreaFor(x => x.Address, new { @class = "form-control form-control-user", placeholder = Model.Address, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Address, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control form-control-user", placeholder = Model.Phone, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row col-sm-12">
+            <div class="col-sm-12">
+                @Html.TextBoxFor(x => x.Fax, new { @class = "form-control form-control-user", placeholder = Model.Fax, @type = "text" })
+                @Html.ValidationMessageFor(x => x.Fax, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-primary btn-user btn-block" />
+    }
+
+</div>
